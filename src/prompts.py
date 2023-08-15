@@ -4,29 +4,29 @@
 
 TASK = {
 	'v6': (
-			"Answer the question truthfully based on the text below. "
-			"Include verbatim quote and a comment where to find it in the text (page number). "
-			#"After the quote write a step by step explanation in a new paragraph. "
-			"After the quote write a step by step explanation. "
-			"Use bullet points. "
-			#"After that try to rephrase the original question so it might give better results. " 
+			"Répondez à la question en vous basant sur le texte ci-dessous. "
+			"Inclure la citation verbatim et un commentaire indiquant où la trouver dans le texte (numéro de page). "
+			#"Après la citation, écrivez une explication étape par étape dans un nouveau paragraphe. "
+			"Après la citation, écrivez une explication étape par étape. "
+			"Utilisez des puces. "
+			#"Après cela, essayez de reformuler la question initiale afin d'obtenir de meilleurs résultats. " 
 		),
 	'v5': (
-			"Answer the question truthfully based on the text below. "
-			"Include at least one verbatim quote (marked with quotation marks) and a comment where to find it in the text (ie name of the section and page number). "
-			"Use ellipsis in the quote to omit irrelevant parts of the quote. "
-			"After the quote write (in the new paragraph) a step by step explanation to be sure we have the right answer "
-			"(use bullet-points in separate lines)" #, adjust the language for a young reader). "
-			"After the explanation check if the Answer is consistent with the Context and doesn't require external knowledge. "
-			"In a new line write 'SELF-CHECK OK' if the check was successful and 'SELF-CHECK FAILED' if it failed. " 
+			"Répondez à la question en vous basant sur le texte ci-dessous. "
+			"Incluez au moins une citation verbatim (marquée par des guillemets) et un commentaire indiquant où la trouver dans le texte (c'est-à-dire le nom de la section et le numéro de page). "
+			"Utilisez des points de suspension dans la citation pour omettre les parties non pertinentes de la citation. "
+			"Après la citation, écrivez (dans un nouveau paragraphe) une explication étape par étape pour vous assurer que vous avez la bonne réponse.
+			" (utilisez des puces sur des lignes séparées) " #, adapter le langage pour un jeune lecteur). "
+			"Après l'explication, vérifiez si la réponse est cohérente avec le contexte et ne nécessite pas de connaissances externes. "
+			"Sur une nouvelle ligne, écrivez 'Autocontrôle OK' si le contrôle a réussi et 'Autocontrôle échoué' s'il a échoué. " 
 		),
 	'v4':
-		"Answer the question truthfully based on the text below. " \
-		"Include verbatim quote and a comment where to find it in the text (ie name of the section and page number). " \
-		"After the quote write an explanation (in the new paragraph) for a young reader.",
-	'v3': 'Answer the question truthfully based on the text below. Include verbatim quote and a comment where to find it in the text (ie name of the section and page number).',
-	'v2': 'Answer question based on context. The answers sould be elaborate and based only on the context.',
-	'v1': 'Answer question based on context.',
+		"Répondez à la question en vous basant sur le texte ci-dessous. " \
+		"Inclure une citation verbatim et un commentaire sur l'endroit où la trouver dans le texte (c'est-à-dire le nom de la section et le numéro de la page). " \
+		"Après la citation, écrivez une explication (dans le nouveau paragraphe) pour un jeune lecteur",
+	'v3' : 'Répondez à la question en vous basant sur le texte ci-dessous. Incluez la citation verbatim et un commentaire indiquant où la trouver dans le texte (c\'est-à-dire le nom de la section et le numéro de page)',
+	'v2' : 'Répondez à la question en vous basant sur le contexte. Les réponses doivent être élaborées et basées uniquement sur le contexte',
+	'v1' : 'Répondre à la question en fonction du contexte',
 	# 'v5':
 		# "Generate a comprehensive and informative answer for a given question solely based on the provided document fragments. " \
 		# "You must only use information from the provided fragments. Use an unbiased and journalistic tone. Combine fragments together into coherent answer. " \
@@ -34,10 +34,10 @@ TASK = {
 		# "If different fragments refer to different entities with the same name, write separate answer for each entity.",
 }
 
-HYDE = "Write an example answer to the following question. Don't write generic answer, just assume everything that is not known."
+HYDE = "Rédigez un exemple de réponse à la question suivante. N'écrivez pas de réponse générique, mais supposez tout ce qui n'est pas connu."
 
 # TODO
 SUMMARY = {
-	'v2':'Describe the document from which the fragment is extracted. Omit any details.',
-	'v1':'Describe the document from which the fragment is extracted. Do not describe the fragment, focus on figuring out what kind document it is.',
+	'v2' : "Décrire le document dont le fragment est extrait. Omettre tout détail",
+	'v1' : "Décrivez le document dont le fragment est extrait. Ne décrivez pas le fragment, concentrez-vous sur le type de document dont il s'agit.",
 }
