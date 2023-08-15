@@ -1,24 +1,24 @@
-# Ask my PDF
+# Intérroger mon PDF
 
 
 
-Thank you for your interest in my application. Please be aware that this is only a **Proof of Concept system** and may contain bugs or unfinished features. If you like this app you can ❤️ [follow me](https://twitter.com/KerbalFPV) on Twitter for news and updates.
+Je vous remercie de l'intérêt que vous portez à ma candidature. Veuillez noter qu'il ne s'agit que d'une **preuve de concept** et qu'elle peut contenir des bogues ou des fonctionnalités inachevées.
 
 
 
-### Ask my PDF - Question answering system built on top of GPT3
+### Ask my PDF - Système de réponse aux questions basé sur GPT3
 
 
 
-🎲 The primary use case for this app is to assist users in answering  questions about board game rules based on the instruction manual. While  the app can be used for other tasks, helping users with board game rules is particularly meaningful to me since I'm an avid fan of board games  myself. Additionally, this use case is relatively harmless, even in  cases where the model may experience hallucinations.
+🎲 Le premier cas d'utilisation de cette application est d'aider les utilisateurs à répondre à des questions sur les règles des jeux de société en se basant sur le manuel d'instructions. Bien que l'application puisse être utilisée pour d'autres tâches, aider les utilisateurs à répondre aux règles des jeux de société est particulièrement important pour moi, car je suis moi-même un fervent amateur de jeux de société. En outre, ce cas d'utilisation est relativement inoffensif, même dans les cas où le modèle peut avoir des hallucinations.
 
 
 
-🌐 The app can be accessed on the Streamlit Community Cloud at https://ask-my-pdf.streamlit.app/. 🔑 However, to use the app, you will need your own [OpenAI's API key](https://platform.openai.com/account/api-keys).
+🌐 L'application est accessible sur le Cloud communautaire Streamlit à l'adresse https://interroger-mon-pdf.streamlit.app/. Toutefois, pour utiliser l'application, vous devez disposer de votre propre [OpenAI's API key](https://platform.openai.com/account/api-keys).
 
 
 
-📄 The app implements the following academic papers:
+📄 L'application met en œuvre les documents académiques suivants :
 
 - [In-Context Retrieval-Augmented Language Models](https://arxiv.org/abs/2302.00083) aka **RALM**
 
@@ -30,17 +30,17 @@ Thank you for your interest in my application. Please be aware that this is only
 
 
 
-1. Clone the repo:
+1. Cloner le repo:
 
    `git clone https://github.com/mobarski/ask-my-pdf`
 
-2. Install dependencies:
+2. Installer les dependencies:
 
    `pip install -r ask-my-pdf/requirements.txt`
 
-3. Run the app:
+3. Lancer l'app:
 
-   `cd ask-my-pdf/src`
+   `cd interroger-mon-pdf/src`
    
    `run.sh` or `run.bat`
 
@@ -62,7 +62,7 @@ Thank you for your interest in my application. Please be aware that this is only
 
 
 
-### Environment variables used for configuration
+### Variables d'environnement utilisées pour la configuration
 
 
 
