@@ -69,18 +69,18 @@ def ui_info():
 	st.write("Made by [Maciej Obarski](https://www.linkedin.com/in/mobarski/).", unsafe_allow_html=True)
 	ui_spacer(1)
 	st.markdown("""
-		Merci de l'intérêt que vous portez à mon application. 
+		Merci de l'intérêt que vous portez à cette application. 
   		Veuillez noter qu'il ne s'agit que d'un système de démonstration de faisabilité 
     		et qu'il peut contenir des bogues ou des fonctionnalités inachevées.
 	
 		""")
 	ui_spacer(1)
-	st.markdown('Le code source est disponible [ici](https://github.com/chrisagon/Interroger-mon-pdf).')
+	st.markdown('Le code source en français est disponible [ici](https://github.com/chrisagon/Interroger-mon-pdf).')
 
 def ui_api_key():
 	if ss['community_user']:
-		st.write('## 1. Optional - enter your OpenAI API key')
-		t1,t2 = st.tabs(['community version','enter your own API key'])
+		st.write('## 1. Optionel - entrez votre clé OpenAI API')
+		t1,t2 = st.tabs(['community version','entrez votre clé API'])
 		with t1:
 			pct = model.community_tokens_available_pct()
 			st.write(f'Community tokens available: :{"green" if pct else "red"}[{int(pct)}%]')
