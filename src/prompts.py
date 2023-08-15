@@ -15,7 +15,7 @@ TASK = {
 			"Répondez à la question en vous basant sur le texte ci-dessous. "
 			"Incluez au moins une citation verbatim (marquée par des guillemets) et un commentaire indiquant où la trouver dans le texte (c'est-à-dire le nom de la section et le numéro de page). "
 			"Utilisez des points de suspension dans la citation pour omettre les parties non pertinentes de la citation. "
-			"Après la citation, écrivez (dans un nouveau paragraphe) une explication étape par étape pour vous assurer que vous avez la bonne réponse.
+			"Après la citation, écrivez (dans un nouveau paragraphe) une explication étape par étape pour vous assurer que vous avez la bonne réponse."
 			" (utilisez des puces sur des lignes séparées) " #, adapter le langage pour un jeune lecteur). "
 			"Après l'explication, vérifiez si la réponse est cohérente avec le contexte et ne nécessite pas de connaissances externes. "
 			"Sur une nouvelle ligne, écrivez 'Autocontrôle OK' si le contrôle a réussi et 'Autocontrôle échoué' s'il a échoué. " 
