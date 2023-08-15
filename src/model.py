@@ -71,7 +71,7 @@ def index_file(f, filename, fix_text=False, frag_size=0, cache=None):
 	
 	t3 = now()
 	vectors = resp['vectors']
-	summary_prompt = f"{texts[0]}\n\nDescribe the document from which the fragment is extracted. Omit any details.\n\n" # TODO: move to prompts.py
+	summary_prompt = f"{texts[0]}\n\nDécrivez le document dont le fragment est extrait. Omettre aucun détail.\n\n" # TODO: move to prompts.py
 	summary = ai.complete(summary_prompt)
 	t4 = now()
 	usage = resp['usage']
@@ -94,7 +94,7 @@ def index_file(f, filename, fix_text=False, frag_size=0, cache=None):
 	return out
 
 def split_pages_into_fragments(pages, frag_size):
-	"split pages (list of texts) into smaller fragments (list of texts)"
+	"diviser des pages (liste de textes) en fragments plus petits (liste de textes)"
 	page_offset = [0]
 	for p,page in enumerate(pages):
 		page_offset += [page_offset[-1]+len(page)+1]
@@ -106,7 +106,7 @@ def split_pages_into_fragments(pages, frag_size):
 		return pages
 
 def text_to_fragments(text, size, page_offset):
-	"split single text into smaller fragments (list of texts)"
+	"diviser un texte en fragments plus petits (liste de textes)"
 	if size and len(text)>size:
 		out = []
 		pos = 0
@@ -139,12 +139,12 @@ def find_eos(text):
 ###############################################################################
 
 def fix_text_problems(text):
-	"fix common text problems"
+	"résoudre les problèmes de texte les plus courants"
 	text = re.sub('\s+[-]\s+','',text) # word continuation in the next line
 	return text
 
 def query(text, index, task=None, temperature=0.0, max_frags=1, hyde=False, hyde_prompt=None, limit=None, n_before=1, n_after=1, model=None):
-	"get dictionary with the answer for the given question (text)."
+	"obtenir un dictionnaire avec la réponse à la question donnée (texte)."
 	out = {}
 	
 	if hyde:
@@ -191,7 +191,7 @@ def query(text, index, task=None, temperature=0.0, max_frags=1, hyde=False, hyde
 			context_len = ai.get_token_count(context)
 	out['context_len'] = context_len
 	prompt = f"""
-		{task or 'Task: Answer question based on context.'}
+		{task or 'Task: Répondre à la question en fonction du contexte.'}
 		
 		Context:
 		{context}
@@ -221,8 +221,8 @@ def query(text, index, task=None, temperature=0.0, max_frags=1, hyde=False, hyde
 	return out
 
 def hypotetical_answer(text, index, hyde_prompt=None, temperature=0.0):
-	"get hypotethical answer for the question (text)"
-	hyde_prompt = hyde_prompt or 'Write document that answers the question.'
+	"obtenir une réponse hypothétique à la question (texte)"
+	hyde_prompt = hyde_prompt or 'Rédiger un document qui répond à la question.'
 	prompt = f"""
 	{hyde_prompt}
 	Question: "{text}"
