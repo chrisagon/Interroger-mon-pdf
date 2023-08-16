@@ -71,6 +71,7 @@ def ui_info():
 	st.markdown("""
 		Merci de l'intérêt que vous portez à cette application. 
   		Veuillez noter qu'il ne s'agit que d'un système de démonstration de faisabilité 
+    		(*dans le cadre de la préparation du groupe IA.venir de HRConseil*)
     		et qu'il peut contenir des bogues ou des fonctionnalités inachevées.
 	
 		""")
