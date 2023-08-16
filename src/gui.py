@@ -93,7 +93,7 @@ def ui_api_key():
 		with t2:
 			st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
 	else:
-		    if not api_key:  	# api_key présent dans .env
+		if not api_key:  	# api_key présent dans .env
 			st.write('## 1. Entrez votre clé OpenAI API ')
 			st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
 
