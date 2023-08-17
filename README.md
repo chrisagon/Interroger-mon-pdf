@@ -32,7 +32,7 @@ L'application va évoluer avec l'implémentation des [fonctions de résumés de 
 
 1. Cloner le repo:
 
-   `git clone https://github.com/mobarski/ask-my-pdf`
+   `git clone https://github.com/chrisagon/interroger-mon-pdf`
 
 2. Installer les dependencies:
 
