@@ -2,11 +2,11 @@
 
 
 
-Je vous remercie de l'intérêt que vous portez à ma candidature. Veuillez noter qu'il ne s'agit que d'une **preuve de concept** et qu'elle peut contenir des bogues ou des fonctionnalités inachevées.
+Je vous remercie de l'intérêt que vous portez à ce projet. Veuillez noter qu'il ne s'agit que d'une **preuve de concept** et qu'elle peut contenir des bogues ou des fonctionnalités inachevées. En particulier, les prompts et les appels aux fonctions de la librairie LangChain sont appelées à évoluer.
 
 
 
-### Ask my PDF - Système de réponse aux questions basé sur GPT3
+### Intérroger un PDF  - Système de réponse aux questions sur un PDF basé sur GPT3.5
 
 
 
@@ -14,7 +14,7 @@ Je vous remercie de l'intérêt que vous portez à ma candidature. Veuillez note
 
 
 
-🌐 L'application est accessible sur le Cloud communautaire Streamlit à l'adresse https://interroger-mon-pdf.streamlit.app/. Toutefois, pour utiliser l'application, vous devez disposer de votre propre [OpenAI's API key](https://platform.openai.com/account/api-keys).
+🌐 L'application est accessible sur le Cloud communautaire Streamlit [en cliquant ici](https://interroger-un-pdf-pour-iavenir.streamlit.app/). Toutefois, pour utiliser l'application, vous devez disposer de votre propre [OpenAI's API key](https://platform.openai.com/account/api-keys).
 
 
 
@@ -24,7 +24,7 @@ Je vous remercie de l'intérêt que vous portez à ma candidature. Veuillez note
 
 - [Precise Zero-Shot Dense Retrieval without Relevance Labels](https://arxiv.org/abs/2212.10496) aka **HyDE** (Hypothetical Document Embeddings)
 
-
+L'application va évoluer avec l'implémentation des [fonctions de résumés de LangChain](https://python.langchain.com/docs/use_cases/summarization).
 
 ### Installation
 
