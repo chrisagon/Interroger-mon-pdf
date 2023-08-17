@@ -1,12 +1,14 @@
-__version__ = "0.4.8.3"
+__version__ = "0.5.0-FR"
 app_name = "Interroger mon PDF"
-
 
 # BOILERPLATE
 
 import streamlit as st
 st.set_page_config(layout='centered', page_title=f'{app_name} {__version__}')
 ss = st.session_state
+if 'community_user' not in st.session_state:
+	st.session_state['community_user'] = 'JohnDoe'
+
 if 'debug' not in ss: ss['debug'] = {}
 import css
 st.write(f'<style>{css.v1}</style>', unsafe_allow_html=True)
@@ -23,11 +25,19 @@ import feedback
 import cache
 import os
 
+from dotenv import load_dotenv
 from time import time as now
+load_dotenv() # charge les variables d'environnement à partir du fichier .env
 
+
+if 'api_key' not in st.session_state:
+	api_key = ss.get('api_key') or os.getenv('OPENAI_API_KEY')
+	model.use_key(api_key)
+#
 # HANDLERS
 
 def on_api_key_change():
+	ss['community_user'] = os.getenv('COMMUNITY_USER')
 	api_key = ss.get('api_key') or os.getenv('OPENAI_API_KEY')
 	model.use_key(api_key) # TODO: empty api_key
 	#
@@ -42,8 +52,6 @@ def on_api_key_change():
 	ss['debug']['storage.folder'] = ss['storage'].folder
 	ss['debug']['storage.class'] = ss['storage'].__class__.__name__
 
-
-ss['community_user'] = os.getenv('COMMUNITY_USER')
 if 'user' not in ss and ss['community_user']:
 	on_api_key_change() # use community key
 
@@ -60,42 +68,44 @@ def ui_spacer(n=2, line=False, next_n=0):
 
 def ui_info():
 	st.markdown(f"""
-	# Interroger mon PDF
+	# Interroger un PDF
 	version {__version__}
 	
 	Système de réponse aux questions construit sur la base de GPT3.
 	""")
 	ui_spacer(1)
-	st.write("Made by [Maciej Obarski](https://www.linkedin.com/in/mobarski/).", unsafe_allow_html=True)
+	st.write("Construit sur la base de AskMyPdf de [Maciej Obarski](https://www.linkedin.com/in/mobarski/).", unsafe_allow_html=True)
 	ui_spacer(1)
 	st.markdown("""
 		Merci de l'intérêt que vous portez à cette application. 
   		Veuillez noter qu'il ne s'agit que d'un système de démonstration de faisabilité 
     		(*dans le cadre de la préparation du groupe IA.venir de HRConseil*)
     		et qu'il peut contenir des bogues ou des fonctionnalités inachevées.
-	
 		""")
+	ui_spacer(1)
+	st.markdown('Les Prompts peuvent être visible et modifiables dans le panneau **Paramètres** ci-dessous.')
 	ui_spacer(1)
 	st.markdown('Le code source en français est disponible [ici](https://github.com/chrisagon/Interroger-mon-pdf).')
 
 def ui_api_key():
-	if ss['community_user']:
-		st.write('## 1. Optionel - entrez votre clé OpenAI API')
-		t1,t2 = st.tabs(['community version','entrez votre clé API'])
-		with t1:
-			pct = model.community_tokens_available_pct()
-			st.write(f'Community tokens available: :{"green" if pct else "red"}[{int(pct)}%]')
-			st.progress(pct/100)
-			st.write('Refresh in: ' + model.community_tokens_refresh_in())
-			st.write('Vous pouvez vous inscrire à OpenAI et/ou créer votre clé API [ici](https://platform.openai.com/account/api-keys)')
-			ss['community_pct'] = pct
-			ss['debug']['community_pct'] = pct
-		with t2:
-			st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
-	else:
-		if not ss.get('api_key'):  	# api_key présent dans .env
-			st.write('## 1. Entrez votre clé OpenAI API ')
-			st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
+	ss['api_key'] = ss.get('api_key') or os.getenv('OPENAI_API_KEY') # on utilise la clé stockée dans la variable d'environnement
+#	if ss['community_user']:
+#		st.write('## 1. Optionel - entrez votre clé OpenAI API')
+#		t1,t2 = st.tabs(['community version','entrez votre clé API'])
+#		with t1:
+#			pct = model.community_tokens_available_pct()
+#			st.write(f'Community tokens available: :{"green" if pct else "red"}[{int(pct)}%]')
+#			st.progress(pct/100)
+#			st.write('Refresh in: ' + model.community_tokens_refresh_in())
+#			st.write('Vous pouvez vous inscrire à OpenAI et/ou créer votre clé API [ici](https://platform.openai.com/account/api-keys)')
+#			ss['community_pct'] = pct
+#			ss['debug']['community_pct'] = pct
+#		with t2:
+#			st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
+#	else:
+#		if not ss.get('api_key'):  	# api_key présent dans .env
+#			st.write('## 1. Entrez votre clé OpenAI API ')
+#			st.text_input('OpenAI API key', type='password', key='api_key', on_change=on_api_key_change, label_visibility="collapsed")
 
 def index_pdf_file():
 	if ss['pdf_file']:
@@ -121,7 +131,7 @@ def debug_index():
 	ss['debug']['index'] = d
 
 def ui_pdf_file():
-	st.write('## 2. Téléchargez ou sélectionnez votre fichier PDF')
+	st.write('## 📤. Téléchargez ou sélectionnez votre fichier PDF')
 	disabled = not ss.get('user') or (not ss.get('api_key') and not ss.get('community_pct',0))
 	t1,t2 = st.tabs(['UPLOAD','SELECT'])
 	with t1:
@@ -189,7 +199,7 @@ def ui_hyde_prompt():
 	st.text_area('HyDE prompt', prompts.HYDE, key='hyde_prompt')
 
 def ui_question():
-	st.write('## 3. Poser votre questions'+(f' to {ss["filename"]}' if ss.get('filename') else ''))
+	st.write('## 🤖. Poser votre questions'+(f' to {ss["filename"]}' if ss.get('filename') else ''))
 	disabled = False
 	st.text_area('question', key='question', height=100, placeholder='Entrez votre question ici', help='', label_visibility="collapsed", disabled=disabled)
 
@@ -307,7 +317,7 @@ def output_add(q,a):
 with st.sidebar:
 	ui_info()
 	ui_spacer(2)
-	with st.expander('advanced'):
+	with st.expander('Paramètres'):
 		ui_show_debug()
 		b_clear()
 		ui_model()

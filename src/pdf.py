@@ -1,4 +1,5 @@
-"PDF adapter"
+# "PDF adapter"
+# pip install pypdf
 
 import pypdf
 
