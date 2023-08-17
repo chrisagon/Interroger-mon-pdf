@@ -25,10 +25,9 @@ import feedback
 import cache
 import os
 
-from dotenv import load_dotenv
 from time import time as now
-load_dotenv() # charge les variables d'environnement à partir du fichier .env
-
+# from dotenv import load_dotenv # à décommenter si vous l'utiliser sous Windows avec un fichier .env pour stocker vos clés openAI
+# load_dotenv() # charge les variables d'environnement à partir du fichier .env
 
 if 'api_key' not in st.session_state:
 	api_key = ss.get('api_key') or os.getenv('OPENAI_API_KEY')
