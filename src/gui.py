@@ -188,17 +188,17 @@ def ui_hyde_summary():
 	st.checkbox('utilise résumé HyDE', value=True, key='use_hyde_summary')
 
 def ui_task_template():
-	st.selectbox('task prompt template', prompts.TASK.keys(), key='task_name')
+	st.selectbox('Modèle de prompt Action', prompts.TASK.keys(), key='task_name')
 
 def ui_task():
 	x = ss['task_name']
-	st.text_area('task prompt', prompts.TASK[x], key='task')
+	st.text_area('prompt Action', prompts.TASK[x], key='task')
 
 def ui_hyde_prompt():
 	st.text_area('HyDE prompt', prompts.HYDE, key='hyde_prompt')
 
 def ui_question():
-	st.write('## 🤖. Poser votre questions'+(f' to {ss["filename"]}' if ss.get('filename') else ''))
+	st.write('## 🤖. Poser votre question :'+(f' to {ss["filename"]}' if ss.get('filename') else ''))
 	disabled = False
 	st.text_area('question', key='question', height=100, placeholder='Entrez votre question ici', help='', label_visibility="collapsed", disabled=disabled)
 
@@ -280,7 +280,7 @@ def b_reindex():
 		index_pdf_file()
 
 def b_reload():
-	if st.button('reload prompts'):
+	if st.button('recharger les prompts'):
 		import importlib
 		importlib.reload(prompts)
 
